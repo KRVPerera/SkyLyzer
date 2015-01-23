@@ -26,9 +26,9 @@ Raspbian OS
   
       (/etc/network/interfaces)
       
-    Or you can use dhcp and use nmap on linux/ubunut to search your RPI on the network
-    It is suggested to use "ping raspberrypi" but so far it didnt work.
-    (http://raspberrypi.stackexchange.com/questions/12440/ssh-into-raspberry-pi-without-knowing-ip-address)
+  Or you can use dhcp and use nmap on linux/ubunut to search your RPI on the network
+  It is suggested to use "ping raspberrypi" but so far it didnt work.
+  (http://raspberrypi.stackexchange.com/questions/12440/ssh-into-raspberry-pi-without-knowing-ip-address)
     
 OpenCV
   We used below command to install OpenCV on Raspberry Pi
