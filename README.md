@@ -7,12 +7,14 @@ Raspberry Pi
 Raspbian OS
   We are using Raspbian Os, which is a linux OS on Raspberriy Pi for the project
    Proxy Settings
-    Acquire::http::Proxy "http://yourproxyaddress:proxyport";
-       (/etc/apt/apt.conf.d)
-   static IP Address
-      change
+   
+           Acquire::http::Proxy "http://yourproxyaddress:proxyport";
+           (/etc/apt/apt.conf.d)
+           
+  static IP Address
+  change
             iface eth0 inet dhcp
-      to
+  to
             iface eth0 inet static
               address XXX.XXX.XXX.XXX
               netmask XXX.XXX.XXX.XXX
@@ -20,7 +22,8 @@ Raspbian OS
               gateway XXX.XXX.XXX.XXX
               broadcast XXX.XXX.XXX.XXX
               
-    You don't need to add all the lines, usually address and netmask is enough to do a SSH on RPI(Raspberry Pi)
+  You don't need to add all the lines, usually address and netmask is enough to do a SSH on RPI(Raspberry Pi)
+  
       (/etc/network/interfaces)
       
     Or you can use dhcp and use nmap on linux/ubunut to search your RPI on the network
@@ -29,9 +32,11 @@ Raspbian OS
     
 OpenCV
   We used below command to install OpenCV on Raspberry Pi
-  sudo apt-get install libopencv-dev python-opencv
+        
+        sudo apt-get install libopencv-dev python-opencv
     
 VNC Server on Raspbian OS to remote access
-  sudo apt-get install xtightvncviewer
+        
+        sudo apt-get install xtightvncviewer
 
 You can always SSH to RPI, usually SSH is switched on default with password: pi and password: raspberrypi
