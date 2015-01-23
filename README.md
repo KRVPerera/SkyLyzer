@@ -13,14 +13,18 @@ Raspbian OS
            
   static IP Address
   change
-            iface eth0 inet dhcp
+  
+          iface eth0 inet dhcp
+            
   to
-            iface eth0 inet static
-              address XXX.XXX.XXX.XXX
-              netmask XXX.XXX.XXX.XXX
-              network XXX.XXX.XXX.XXX
-              gateway XXX.XXX.XXX.XXX
-              broadcast XXX.XXX.XXX.XXX
+  
+          iface eth0 inet static
+          address XXX.XXX.XXX.XXX
+          netmask XXX.XXX.XXX.XXX
+          network XXX.XXX.XXX.XXX
+          gateway XXX.XXX.XXX.XXX
+          broadcast XXX.XXX.XXX.XXX
+              
               
   You don't need to add all the lines, usually address and netmask is enough to do a SSH on RPI(Raspberry Pi)
   
