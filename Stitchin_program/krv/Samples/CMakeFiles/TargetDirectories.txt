@@ -1,0 +1,1 @@
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Stitchin_program/krv/Samples/CMakeFiles/stitching_detailed.dir

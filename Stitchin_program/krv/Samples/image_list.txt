@@ -1,0 +1,4 @@
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Image_bank/sample2
+"image1.jpg"
+"image2.jpg"
+"image3.jpg"
