@@ -44,7 +44,3 @@ VNC Server on Raspbian OS to remote access
         sudo apt-get install xtightvncviewer
 
 You can always SSH to RPI, usually SSH is switched on default with password: pi and password: raspberrypi
-
-currently if opencv build using cmake we can use cmake to build our program
-just create CMakeLists.txt and run commane cmake .
-then make
