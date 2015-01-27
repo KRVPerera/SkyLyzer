@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Stitchin_program/krv/Sasitha/main.cpp
+iostream
+-
+opencv2/opencv.hpp
+-
+opencv/cv.h
+-
+opencv/highgui.h
+-
+opencv2/highgui/highgui.hpp
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Stitchin_program/krv/Sasitha/opencv2/highgui/highgui.hpp
+opencv2/stitching/stitcher.hpp
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Stitchin_program/krv/Sasitha/opencv2/stitching/stitcher.hpp
+opencv2/stitching/warpers.hpp
+/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Stitchin_program/krv/Sasitha/opencv2/stitching/warpers.hpp
+
