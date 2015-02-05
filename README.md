@@ -48,3 +48,14 @@ You can always SSH to RPI, usually SSH is switched on default with password: pi 
 currently if opencv build using cmake we can use cmake to build our program
 just create CMakeLists.txt and run commane cmake .
 then make
+
+
+Performance Tests Reference Links
+http://www.educ8.me.uk/Dig_Stud/RPi/Pi_timelapse_p3_fs.html
+
+We tested stitch program by 
+1. Increasing number of images
+2. Decreasing overlap 100% 75% 50%
+
+Measured the memory card write speed ( current 4GB class 4 )
+1. Taking many images with different frequencies
