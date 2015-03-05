@@ -31,18 +31,15 @@ string result_name = "res.jpg";
 
 int stitching();
 int main(int argc, char** argv) {
-
-string path = "/home/drex/Desktop/myOpencvAttempt/opecvtest/SkyLyzer/Image_bank/sample2/image1.jpg";
-	crop(path,2);
-
+	stitching();
 }
 
 
 int stitching(){
-	Mat img1 = imread("/home/wathmal/Desktop/imgs/image1.jpg");
-	Mat img2 = imread("/home/wathmal/Desktop/imgs/image2.jpg");
-	Mat img3 = imread("/home/wathmal/Desktop/imgs/image3.jpg");
-	//Mat img4 = imread("/home/wathmal/Desktop/automation challenge 2/boading/f.jpg");
+	Mat img1 = imread("../../Image_bank/sample002/1.jpg");
+	Mat img2 = imread("../../Image_bank/sample002/2.jpg");
+	Mat img3 = imread("../../Image_bank/sample002/3.jpg");
+
 
 	imgs.push_back(img1);
 	imgs.push_back(img2);
@@ -51,10 +48,8 @@ int stitching(){
 
 	Mat pano;
 	Stitcher stitcher= Stitcher::createDefault(true);
-	stitcher.estimateTransform(imgs);
-
-//	Stitcher::Status status= stitcher.stitch(imgs,pano);
-	Stitcher::Status status= stitcher.composePanorama(pano);
+	Stitcher::Status status= stitcher.stitch(imgs,pano);
+//	Stitcher::Status status= stitcher.composePanorama(pano);
 	if(status != Stitcher::OK){
 		cout << "can't stitch " << int(status) << endl;
 		return -1;
