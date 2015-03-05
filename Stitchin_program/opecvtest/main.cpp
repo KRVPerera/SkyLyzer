@@ -11,41 +11,67 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/stitching/stitcher.hpp"
 #include "opencv2/stitching/warpers.hpp"
-
+#include <stdio.h>
 
 using namespace cv;
 using namespace std;
 
+int GLOBAL_WIDTH= 1100;
+
 int getdir (string dir, vector<string> &files);
 string getfilename(string path);
 int cutimage(string path);
-int stitching(string im1, string im2);
+string stitching(string im1, string im2);
 
+string dir = string("../../Image_bank/sample2/");
+string savedpath= "./cropped/";
 int main(int argc, char** argv) {
 
 	// directory for source images.
-	string dir = string("/home/wathmal/Desktop/imgs/rand/");
-	vector<string> files = vector<string>();
+	string stitchedpath;
 
+	vector<string> files = vector<string>();
+	vector<string> sfiles= vector<string>();
 	getdir(dir,files);
-	string croppeddir= "./cropped/";
+	getdir(savedpath, sfiles);
+
 	sort(files.begin(),files.end());
 
 	for (unsigned int i = 0;i < files.size();i++) {
 		cout << files[i] << endl;
 		// now cut image into 2
-		cutimage(dir+ files[i]);
-
-		//stitching(dir+ files[i], dir+ files[i+1]);
+		if(i==0){
+			stitchedpath= stitching(dir+ files[i], dir+ files[i+1]);
+			cutimage(stitchedpath);
+			remove(stitchedpath.c_str());
+		}
+		else if(i != 1){
+			getdir(savedpath, sfiles);
+			string cimage= savedpath+ sfiles[sfiles.size()-1];
+			stitchedpath= stitching(cimage,dir+ files[i]);
+			cutimage(stitchedpath);
+			remove(stitchedpath.c_str());
+			remove(cimage.c_str());
+		}
 
 
 
 	}
+
+
+	/*
+	string ttt= stitching(dir+"1.jpg", dir+"2.jpg");
+	cout << ttt << endl;
+	cutimage(ttt);
+	getdir(savedpath, sfiles);
+	cout << sfiles[sfiles.size()-1] << endl;
+	*/
+
 	/*
 	 * now the images are cropped
 	 * stitch the cropped images by sides.
 	 */
-	vector<string> croppedfiles= vector<string>();
+	/*vector<string> croppedfiles= vector<string>();
 	getdir(croppeddir, croppedfiles);
 	sort(croppedfiles.begin(), croppedfiles.end());
 	for (unsigned int i = 0;i < croppedfiles.size();i++) {
@@ -55,13 +81,22 @@ int main(int argc, char** argv) {
 			stitching(croppeddir+ croppedfiles[i], croppeddir+ croppedfiles[i+1]);
 		}
 
-	}
+	}*/
 	//stitching("./cropped/image2_2.jpg","./cropped/image3_1.jpg");
+
+
+
+	/*Mat testim= imread("/home/wathmal/Desktop/imgs/rand/1.jpg");
+	Size tsize= testim.size();
+	cout << tsize.width << endl;
+	*/
+
+
 	return 0;
 }
 
 
-int stitching(string im1, string im2){
+string stitching(string im1, string im2){
 
 	/*
 	 * this will stitch only 2 images
@@ -72,11 +107,15 @@ int stitching(string im1, string im2){
 	cout << im1 << " & " << im2 << endl;
 	bool try_use_gpu = true;
 	vector<Mat> imgs;
-	string result_name = getfilename(im1) + getfilename(im2)+".jpg";
+	string result_name = savedpath+ getfilename(im1) + getfilename(im2)+".jpg";
 
 	Mat img1 = imread(im1);
 	Mat img2 = imread(im2);
 	//Mat img3 = imread("/home/wathmal/Desktop/imgs/image3.jpg");
+
+
+
+
 
 	imgs.push_back(img1);
 	imgs.push_back(img2);
@@ -92,7 +131,7 @@ int stitching(string im1, string im2){
 
 	if(status != Stitcher::OK){
 		cout << "can't stitch " << int(status) << endl;
-		return -1;
+		return "";
 	}
 	else{
 
@@ -103,7 +142,7 @@ int stitching(string im1, string im2){
 		}
 		*/
 		imwrite(result_name,pano);
-		return 0;
+		return result_name;
 	}
 }
 
@@ -113,8 +152,13 @@ int cutimage(string path){
 
 
 	Size imsize= image.size();
+	/*
 	Rect roi1(0,0, imsize.width /2, imsize.height);
 	Rect roi2(imsize.width /2, 0,imsize.width /2, imsize.height);
+	*/
+
+	Rect roi1(0,0, imsize.width - GLOBAL_WIDTH, imsize.height);
+	Rect roi2(imsize.width - GLOBAL_WIDTH, 0, GLOBAL_WIDTH, imsize.height);
 
 	Mat croppedimg1= image(roi1).clone();
 	Mat croppedimg2= image(roi2).clone();
@@ -171,3 +215,6 @@ int getdir (string dir, vector<string> &files)
     closedir(dp);
     return 0;
 }
+
+
+/*int seqcut(){}*/
