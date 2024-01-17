@@ -59,3 +59,10 @@ We tested stitch program by
 
 Measured the memory card write speed ( current 4GB class 4 )
 1. Taking many images with different frequencies
+
+
+#### Project
+
+<img src="images/1.jpg" alt="Preference countin" width="400"/>
+<img src="images/2.jpg" alt="Preference countin" width="400"/>
+<img src="images/3.jpg" alt="Preference countin" width="400"/>
